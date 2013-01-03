@@ -1,0 +1,33 @@
+{
+  "name": "PhishVids",
+  "description": "Search Phish Videos by Year, Show, and Setlist.",
+  "version": "1.0.0",
+  "main": "./phishvids.js",
+  "dependencies": {
+    "derby": "git://github.com/codeparty/derby.git#master",
+    "racer": "git://github.com/codeparty/racer.git#master",
+
+    "express": "3.0.4",
+    "coffee-script": ">=1.3.3",
+    "racer-db-mongo": "~0.3.13",
+    "mongoose": "~3.3.1",
+    "validator": "~0.4.13",
+    "mocha": "~1.6.0",
+    "should": "~1.2.1",
+    "async": "~0.1.22"
+  },
+  "private": true,
+  "devDependencies": {
+    "coffee-script": ">=1.3.3",
+    "mocha": "~1.6.0"
+  },
+  "subdomain": "pv",
+  "scripts": {
+    "start": "phishvids.js",
+    "test": "mocha test/lib.coffee"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  }
+}
