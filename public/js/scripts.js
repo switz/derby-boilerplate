@@ -1,3 +1,3 @@
 (function() {
-  return 'have fun!';
+  return 'can you still have fun?';
 })();

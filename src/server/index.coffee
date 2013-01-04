@@ -3,6 +3,7 @@ path = require 'path'
 express = require 'express'
 derby = require 'derby'
 racer = require 'racer'
+auth = require 'derby-auth'
 app = require '../app'
 serverError = require './serverError'
 io = racer.io
@@ -26,6 +27,17 @@ ONE_YEAR = 1000 * 60 * 60 * 24 * 365
 root = path.dirname path.dirname __dirname
 publicPath = path.join root, 'public'
 
+# Authentication setup
+strategies =
+  facebook:
+    strategy: require("passport-facebook").Strategy
+    conf:
+      clientID: process.env.FACEBOOK_KEY
+      clientSecret: process.env.FACEBOOK_SECRET
+
+options =
+  domain: process.env.BASE_URL || 'http://localhost:3000'
+
 expressApp
   .use(express.favicon())
   # Gzip static files and serve from memory
@@ -47,6 +59,8 @@ expressApp
 
   # Adds req.getModel method
   .use(store.modelMiddleware())
+  # Adds auth
+  .use(auth(store, strategies, options))
   # Creates an express middleware from the app's routes
   .use(app.router())
   .use(expressApp.router)
