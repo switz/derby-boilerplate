@@ -16,6 +16,10 @@ module.exports.expressApp = expressApp
 
 derby.use require('racer-db-mongo')
 
+if process.env.NODE_ENV is 'development'
+  racer.use(racer.logPlugin)
+  derby.use(derby.logPlugin)
+
 store = module.exports.pvStore = derby.createStore
   listen: server
   db:
@@ -75,12 +79,3 @@ Error.stackTraceLimit = Infinity
 
 io.configure 'production', ->
   io.set "transports", ["websocket", "xhr-polling", "jsonp-polling", "htmlfile"]
-
-if process.env.NODE_ENV is "production"
-  # If error is thrown, don't crash the server
-  process.on 'uncaughtException', (err) ->
-    console.log err.stack
-    console.log "Node NOT Exiting..."
-else
-  racer.use(racer.logPlugin)
-  derby.use(derby.logPlugin)
