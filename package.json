@@ -9,7 +9,7 @@
     "express": "3.0.4",
     "coffee-script": ">=1.3.3",
     "racer-db-mongo": "~0.3.13",
-    "derby-auth": "0.0.24",
+    "derby-auth": "git://github.com/lefnire/derby-auth.git#master",
     "passport-facebook": "~0.1.4"
   },
   "devDependencies": {
