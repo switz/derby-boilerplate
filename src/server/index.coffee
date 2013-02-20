@@ -64,7 +64,7 @@ expressApp
   # Adds req.getModel method
   .use(store.modelMiddleware())
   # Adds auth
-  .use(auth(store, strategies, options))
+  .use(auth.middleware(strategies, options))
   # Creates an express middleware from the app's routes
   .use(app.router())
   .use(expressApp.router)
