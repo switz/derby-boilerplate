@@ -27,6 +27,8 @@ store = module.exports.pvStore = derby.createStore
     uri: 'mongodb://localhost/boilerplate'
     safe: true
 
+auth.store store
+
 ONE_YEAR = 1000 * 60 * 60 * 24 * 365
 root = path.dirname path.dirname __dirname
 publicPath = path.join root, 'public'
