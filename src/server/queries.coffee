@@ -15,7 +15,7 @@ store.query.expose 'collection', 'getYear', (year) ->
 
 giveQueryAccess = (col, fn) ->
   store.queryAccess col, fn, (methodArgs) ->
-    accept = arguments[arguments.length - 1]
+    accept = arguments[arguments.length - 2]
     accept true # for now
 
 obj =
